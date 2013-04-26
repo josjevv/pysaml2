@@ -396,9 +396,11 @@ class Saml2Client(object):
             log.info("service_url: %s" % service_url)
             log.info("my_name: %s" % my_name)
 
+        nameid_format = 'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified'
+
         return self.authn_request(session_id, location, service_url,
                                   spentityid, my_name, vorg, scoping, log,
-                                  sign, binding=binding)
+                                  sign, binding=binding, nameid_format=nameid_format)
 
     def authenticate(self, entityid=None, relay_state="",
                      binding=saml2.BINDING_HTTP_REDIRECT,
